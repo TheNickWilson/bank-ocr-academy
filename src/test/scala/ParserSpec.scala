@@ -63,4 +63,27 @@ class ParserSpec extends WordSpec with MustMatchers with PropertyChecks {
       }
     }
   }
+
+  ".readEntry" must {
+
+    "convert an entry of 000000000" in {
+      val entry = new Entry(
+        " _  _  _  _  _  _  _  _  _ ",
+        "| || || || || || || || || |",
+        "|_||_||_||_||_||_||_||_||_|"
+      )
+
+      parser.readEntry(entry) mustEqual "000000000"
+    }
+
+    "convert an entry of 123456789" in {
+      val entry = new Entry(
+        "    _  _     _  _  _  _  _ ",
+        "  | _| _||_||_ |_   ||_||_|",
+        "  ||_  _|  | _||_|  ||_| _|"
+      )
+
+      parser.readEntry(entry) mustEqual "123456789"
+    }
+  }
 }

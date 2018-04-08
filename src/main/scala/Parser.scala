@@ -15,4 +15,10 @@ class Parser {
     case Nine  => '9'
     case _     => throw new IllegalArgumentException
   }
+
+  def readEntry(entry: Entry): String =
+    entry
+      .asCells
+      .map(readCell)
+      .mkString
 }
