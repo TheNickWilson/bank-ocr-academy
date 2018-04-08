@@ -57,9 +57,7 @@ class ParserSpec extends WordSpec with MustMatchers with PropertyChecks {
 
       forAll(generator -> "invalid") {
         invalidChar =>
-          intercept[IllegalArgumentException] {
-            parser.readCell(invalidChar)
-          }
+          parser.readCell(invalidChar) mustEqual '?'
       }
     }
   }

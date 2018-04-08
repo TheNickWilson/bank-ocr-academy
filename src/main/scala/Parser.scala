@@ -13,7 +13,7 @@ class Parser {
     case Seven => '7'
     case Eight => '8'
     case Nine  => '9'
-    case _     => throw new IllegalArgumentException
+    case _     => '?'
   }
 
   def readEntry(entry: Entry): String =
