@@ -14,3 +14,15 @@ case class Entry (line1: String, line2: String, line3: String) {
       }
   }
 }
+
+object Entry {
+
+  def apply(cells: List[String]): Entry = {
+
+    val top = cells.flatMap(cell => cell.take(3)).mkString
+    val middle = cells.flatMap(cell => cell.slice(3, 6)).mkString
+    val bottom = cells.flatMap(cell => cell.slice(6, 9)).mkString
+
+    new Entry(top, middle, bottom)
+  }
+}

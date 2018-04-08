@@ -3,7 +3,7 @@ import org.scalatest.{MustMatchers, WordSpec}
 class GuesserSpec extends WordSpec with MustMatchers {
 
   val guesser = new Guesser
-  
+
   ".flipPixels" must {
 
     "turn on each active pixel individually when they're blank" in {
@@ -30,6 +30,21 @@ class GuesserSpec extends WordSpec with MustMatchers {
         " _ |_|| |",
         " _ |_||_ "
       )
+    }
+  }
+
+  ".guesses" must {
+
+    "flip the pixels of each character in an entry" in {
+      val entry = new Entry(
+        " _  _  _  _  _  _  _  _  _ ",
+        "| || || || || || || || || |",
+        "|_||_||_||_||_||_||_||_||_|"
+      )
+
+      val guesses = guesser.guesses(entry)
+      guesses.size mustEqual 7 * 9
+      guesses.distinct mustEqual guesses
     }
   }
 }

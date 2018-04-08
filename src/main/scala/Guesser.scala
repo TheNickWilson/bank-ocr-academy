@@ -19,4 +19,16 @@ class Guesser {
         }
         cell.updated(index, inverse).toString
     }.toSet
+
+  def guesses(entry: Entry): List[Entry] = {
+    val cells = entry.asCells
+
+    (0 to 8)
+      .flatMap{
+        index =>
+          flipPixels(cells(index)).map(
+            flipped =>
+              Entry(cells.updated(index, flipped))
+          )}.toList
+  }
 }
